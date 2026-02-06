@@ -120,7 +120,7 @@ function createCalculator(mapDifficulty) {
         return true;
     }
 
-    let mapDifficultyBadge = document.getElementsByClassName('tag difficulty-badge expert-plus svelte-1ro6svo');
+    let mapDifficultyBadge = document.querySelectorAll("div[class*='tag ']");
 
     if (mapDifficultyBadge == 0) {
         return false;
@@ -172,7 +172,7 @@ function createCalculator(mapDifficulty) {
 }
 
 function calculatePerformance(accuracy) {
-    let mapDifficulty = document.getElementsByClassName('tag difficulty-badge expert-plus svelte-1ro6svo')[0];
+    let mapDifficulty = document.querySelectorAll("div[class*='tag ']")[0];
 
     let calculatorPerformanceField = document.getElementById('performance-field');
 
