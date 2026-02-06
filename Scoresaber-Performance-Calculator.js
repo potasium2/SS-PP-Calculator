@@ -88,7 +88,7 @@ function LinearInterpolation(x, xp, fp) {
         return fp[fp.length - 1]
     }
 
-    let index = BinarySearch(x, xp);
+    let index = BinarySearch(x, xp) - 1;
 
     let t = (x - xp[index]) / (xp[index + 1] - xp[index]);
     let midPoint = fp[index] + (fp[index + 1] - fp[index]) * t
@@ -97,11 +97,11 @@ function LinearInterpolation(x, xp, fp) {
 
 function BinarySearch(key, array) {
     let min = 0;
-    let mid = 0;
     let max = array.length - 1;
+    let mid = Math.floor((min + max) / 2);
 
-    while (min != max && min != max - 1) {
-        mid = Math.round((min + max) / 2);
+    while (min != max) {
+        mid = Math.floor((min + max) / 2);
         if (key < array[mid]) {
             max = mid;
         }
@@ -110,12 +110,7 @@ function BinarySearch(key, array) {
         }
     }
 
-    if (min == max - 1) {
-        return mid + 1;
-    }
-    else {
-        return mid
-    }
+    return max
 }
 
 function createCalculator(mapDifficulty) {
@@ -151,7 +146,7 @@ function createCalculator(mapDifficulty) {
 
     let accuracyInput = document.createElement("input");
     accuracyInput.setAttribute("class", 'svelte-1sxyuf3');
-    accuracyInput.setAttribute("placeholder", 'Enter Accuracy');
+    accuracyInput.setAttribute("placeholder", 'Enter Accuracy: i;e 94.37');
     accuracyInput.setAttribute("type", 'text');
 
     accuracyInput.addEventListener('input', function () {
